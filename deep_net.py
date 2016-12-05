@@ -49,14 +49,15 @@ the model.
 def neural_network_model(data):
     
     # bias exists to add a default value to fire neurons even with 0 input
+    # changed biases for more acurracy to 1 from tf.Variable(tf.random_normal(n_nodes_hl3))
     hidden_1_layer = {'weights': tf.Variable(tf.random_normal([784, n_nodes_hl1])),
-                      'biases': tf.Variable(tf.random_normal([n_nodes_hl1))}
+                      'biases': 1}
     
     hidden_2_layer = {'weights': tf.Variable(tf.random_normal([n_nodes_hl1, n_nodes_hl2])),
-                      'biases': tf.Variable(tf.random_normal(n_nodes_hl2))}
+                      'biases': 1}
     
     hidden_3_layer = {'weights': tf.Variable(tf.random_normal([n_nodes_hl2, n_nodes_hl3])),
-                      'biases': tf.Variable(tf.random_normal(n_nodes_hl3))}
+                      'biases': 1}
     
     output_layer = {'weights': tf.Variable(tf.random_normal([n_nodes_hl3, n_classes])),
                       'biases': tf.Variable(tf.random_normal(n_classes))}                                            
@@ -75,4 +76,3 @@ def neural_network_model(data):
     output = tf.add(tf.matmul(l3, output_layer['weights']) + output_layer['biases'])
 
     return output
-
